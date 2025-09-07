@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied - Security Protocol Alert</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Define a subtle flickering animation for a sci-fi feel */
+        @keyframes flicker {
+            0%, 19.9% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
+            20% { filter: brightness(1.5) drop-shadow(0 0 15px #00FFFF); }
+            20.1% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
+            22% { filter: brightness(1.5) drop-shadow(0 0 15px #00FFFF); }
+            22.1% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
+            49.9% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
+            50% { filter: brightness(0.8) drop-shadow(0 0 5px #00FFFF); }
+            50.1% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
+            60% { filter: brightness(1.2) drop-shadow(0 0 12px #00FFFF); }
+            60.1% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
+            100% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
+        }
+
+        .flicker-text {
+            animation: flicker 4s infinite alternate;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-sky-200 flex items-center justify-center min-h-screen p-4">
+
+    <div class="max-w-4xl w-full mx-auto bg-slate-900 border-2 border-sky-600 rounded-3xl shadow-2xl p-8 md:p-12 text-center transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_50px_rgba(0,191,255,0.7)]">
+        
+        <!-- Main Header with a Sci-Fi vibe -->
+        <h1 class="text-4xl md:text-6xl font-bold text-sky-400 mb-6 font-orbitron drop-shadow-xl flicker-text">
+            SYSTEM ALERT: ACCESS DENIED
+        </h1>
+
+        <!-- The core message requested by the user -->
+        <div class="text-left bg-slate-800 p-6 md:p-8 rounded-xl border border-sky-700 space-y-4">
+            <p class="text-xl md:text-2xl text-sky-300">
+                <span class="text-red-500 font-bold drop-shadow-lg">FAILURE LOG:</span> This site was blocked by <span class="text-orange-400">Security Protocol 734-C</span>.
+            </p>
+            <p class="text-lg md:text-xl text-sky-300">
+                <span class="text-orange-500 font-bold drop-shadow-lg">REASON:</span> Unapproved data transfer detected, violating system-wide security regulations.
+            </p>
+            <div class="mt-8">
+                <p class="text-sm text-slate-400 uppercase tracking-widest">
+                    <span class="font-bold text-green-400">STATUS:</span> <span class="text-red-400">PROTOCOL VIOLATION</span>
+                </p>
+                <p class="text-sm text-slate-400 uppercase tracking-widest">
+                    <span class="font-bold text-green-400">ERROR_CODE:</span> <span class="text-purple-400">E7A-519B-C42A</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Call to action/instruction for the user -->
+        <div class="mt-10">
+            <p class="text-md md:text-lg text-slate-300 mb-4">
+                To proceed, please contact your System Administrator with the error code provided.
+            </p>
+            <a href="mailto:admin@example.com?subject=Access%20Denied%20-%20Security%20Protocol%20Alert&body=Hello%20System%20Administrator,%0D%0A%0D%0AThis%20email%20is%20to%20report%20a%20blocked%20page%20with%20the%20following%20details:%0D%0A%0D%0A-Error%20Code:%20E7A-519B-C42A%0D%0A-Reason:%20Unapproved%20data%20transfer%20detected%0D%0A%0D%0AUser%20Description:%20%5BPlease%20describe%20your%20issue%20here%5D" class="inline-block bg-sky-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-sky-500 transition duration-300 transform hover:scale-105 drop-shadow-lg">
+                REPORT TO ADMINISTRATOR
+            </a>
+        </div>
+        
+        <!-- Futuristic footer with system info -->
+        <div class="mt-12 text-xs text-slate-600 uppercase tracking-widest">
+            <p>System Log: 2548-A | Access Port: [142.168.1.103]</p>
+            <p>Initiated: 2025-09-07 | Block Protocol: SENTRY-2.0</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
