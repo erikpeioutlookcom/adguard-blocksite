@@ -3,81 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Denied</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ACCESS DENIED - Website Blocked</title>
+    <!-- Use a futuristic font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Define a subtle flickering animation for a sci-fi feel */
-        @keyframes flicker {
-            0%, 19.9% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
-            20% { filter: brightness(1.5) drop-shadow(0 0 15px #00FFFF); }
-            20.1% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
-            22% { filter: brightness(1.5) drop-shadow(0 0 15px #00FFFF); }
-            22.1% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
-            49.9% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
-            50% { filter: brightness(0.8) drop-shadow(0 0 5px #00FFFF); }
-            50.1% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
-            60% { filter: brightness(1.2) drop-shadow(0 0 12px #00FFFF); }
-            60.1% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
-            100% { filter: brightness(1) drop-shadow(0 0 10px #00FFFF); }
-        }
-
-        .flicker-text {
-            animation: flicker 4s infinite alternate;
+        :root {
+            --primary-color: #00e5e5;
+            --secondary-color: #333333;
+            --background-color: #0a0a0a;
+            --text-color: #cccccc;
+            --glow-color: #00e5e5;
         }
 
         body {
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Orbitron', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .card-container {
+            position: relative;
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(51, 51, 51, 0.5);
+            box-shadow: 0 0 20px rgba(0, 229, 229, 0.2);
+            transition: box-shadow 0.5s ease-in-out;
+        }
+
+        .card-container:hover {
+            box-shadow: 0 0 30px rgba(0, 229, 229, 0.5);
+        }
+
+        .glitch-text {
+            animation: glitch 1s infinite;
+        }
+
+        .scanline-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 50%,
+                rgba(0, 229, 229, 0.1) 50%
+            );
+            background-size: 100% 4px;
+            animation: scanline 5s linear infinite;
+        }
+
+        .glow-border {
+            position: relative;
+        }
+
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                #00e5e5,
+                #00aaff,
+                #00e5e5,
+                #00aaff
+            );
+            background-size: 400% 400%;
+            z-index: -1;
+            filter: blur(10px);
+            animation: glowing-border 20s ease-in-out infinite;
+        }
+
+        @keyframes glowing-border {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 -100px; }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
-<body class="bg-slate-950 text-sky-200 flex items-center justify-center min-h-screen p-4">
-
-    <div class="max-w-4xl w-full mx-auto bg-slate-900 border-2 border-sky-600 rounded-3xl shadow-2xl p-8 md:p-12 text-center transform transition-all duration-500 hover:scale-105 hover:shadow-[0_0_50px_rgba(0,191,255,0.7)]">
-        
-        <!-- Main Header with a Sci-Fi vibe -->
-        <h1 class="text-4xl md:text-6xl font-bold text-sky-400 mb-6 font-orbitron drop-shadow-xl flicker-text">
-            SYSTEM ALERT: ACCESS DENIED
-        </h1>
-
-        <!-- The core message requested by the user -->
-        <div class="text-left bg-slate-800 p-6 md:p-8 rounded-xl border border-sky-700 space-y-4">
-            <p class="text-xl md:text-2xl text-sky-300">
-                <span class="text-red-500 font-bold drop-shadow-lg">FAILURE LOG:</span> This site was blocked by <span class="text-orange-400">Security Protocol 734-C</span>.
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="card-container rounded-3xl p-8 max-w-2xl w-full text-center glow-border scanline-effect">
+        <div class="relative z-10">
+            <svg class="mx-auto w-20 h-20 text-red-500 mb-4 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <h1 class="text-4xl sm:text-5xl font-bold mb-2 text-red-500 glitch-text">ACCESS DENIED</h1>
+            <h2 class="text-lg sm:text-xl font-light mb-6 text-gray-400">
+                // ATTEMPT TO ACCESS UNAUTHORIZED DOMAIN DETECTED //
+            </h2>
+            <p class="text-sm sm:text-base leading-relaxed text-gray-500 max-w-md mx-auto mb-8">
+                This destination has been flagged for containing harmful or inappropriate content. 
+                For your security, access has been restricted by the system administrator.
             </p>
-            <p class="text-lg md:text-xl text-sky-300">
-                <span class="text-orange-500 font-bold drop-shadow-lg">REASON:</span> Unapproved data transfer detected, violating system-wide security regulations.
-            </p>
-            <div class="mt-8">
-                <p class="text-sm text-slate-400 uppercase tracking-widest">
-                    <span class="font-bold text-green-400">STATUS:</span> <span class="text-red-400">PROTOCOL VIOLATION</span>
-                </p>
-                <p class="text-sm text-slate-400 uppercase tracking-widest">
-                    <span class="font-bold text-green-400">ERROR_CODE:</span> <span class="text-purple-400">E7A-519B-C42A</span>
-                </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="https://www.google.com" class="inline-block px-8 py-3 bg-red-600 text-white font-bold uppercase tracking-wider rounded-lg border border-red-500 hover:bg-red-500 transition duration-300">
+                    BACK TO SAFETY
+                </a>
             </div>
         </div>
-
-        <!-- Call to action/instruction for the user -->
-        <div class="mt-10">
-            <p class="text-md md:text-lg text-slate-300 mb-4">
-                To proceed, please contact your System Administrator with the error code provided.
-            </p>
-            <a href="mailto:admin@example.com?subject=Access%20Denied%20-%20Security%20Protocol%20Alert&body=Hello%20System%20Administrator,%0D%0A%0D%0AThis%20email%20is%20to%20report%20a%20blocked%20page%20with%20the%20following%20details:%0D%0A%0D%0A-Error%20Code:%20E7A-519B-C42A%0D%0A-Reason:%20Unapproved%20data%20transfer%20detected%0D%0A%0D%0AUser%20Description:%20%5BPlease%20describe%20your%20issue%20here%5D" class="inline-block bg-sky-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-sky-500 transition duration-300 transform hover:scale-105 drop-shadow-lg">
-                REPORT TO ADMINISTRATOR
-            </a>
-        </div>
-        
-        <!-- Futuristic footer with system info -->
-        <div class="mt-12 text-xs text-slate-600 uppercase tracking-widest">
-            <p>System Log: 2548-A | Access Port: [142.168.1.103]</p>
-            <p>Initiated: 2025-09-07 | Block Protocol: SENTRY-2.0</p>
-        </div>
-
     </div>
-
 </body>
 </html>
 
